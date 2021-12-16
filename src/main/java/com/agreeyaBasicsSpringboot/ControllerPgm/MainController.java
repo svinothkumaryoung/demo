@@ -3,7 +3,9 @@ package com.agreeyaBasicsSpringboot.ControllerPgm;
 import com.agreeyaBasicsSpringboot.ModelPackage.StudentInfo;
 import com.agreeyaBasicsSpringboot.repositoryPgm.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.web.bind.annotation.*;
+import com.agreeyaBasicsSpringboot.GlobalException.ResourceNotFoundException;
 
 import java.util.Optional;
 
@@ -21,10 +23,8 @@ public class MainController {
    }
 
    @GetMapping("/viewStudent/{id}")
-    public Optional<StudentInfo> viewStudent(@PathVariable ("id") Integer id)
+    public StudentInfo viewStudent(@PathVariable ("id") Integer id)
    {
-
-return this.studentRepo.findById(id);
+    return this.studentRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("Ur record not found"));
    }
-
 }
