@@ -82,4 +82,16 @@ public class StudentInfo {
     public void setZipcode(Integer zipcode) {
         this.zipcode = zipcode;
     }
+
+    @Override
+    public String toString() {
+        return "StudentInfo{" +
+                "serialNo=" + serialNo +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", Country='" + Country + '\'' +
+                ", zipcode=" + zipcode +
+                '}';
+    }
 }
